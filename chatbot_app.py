@@ -6,7 +6,7 @@ import streamlit as st  #all streamlit commands will be available through the "s
 import chatbot_lib as glib  #reference to local lib script
 
 st.set_page_config(page_title="Chatbot")  #HTML title
-st.title("Chatbot")  #page title
+st.title("Chatbot")  # page title
 
 if 'memory' not in st.session_state:  #see if the memory hasn't been created yet
     st.session_state.memory = glib.get_memory()  #initialize the memory
@@ -22,7 +22,7 @@ for message in st.session_state.chat_history:  #loop through the chat history
 input_text = st.chat_input("Chat with your bot here")  # display a chat input box
 
 # 1) Get document, with marked changes
-input_doc_list = marker("NDA 1.docx") # get_blank_doc()
+input_doc_list = marker("NDA 3.docx") # get_blank_doc()
 
 summaries = []
 for i, doc in enumerate(input_doc_list):
@@ -55,6 +55,6 @@ st.session_state.chat_history = []  # clear the chat history
 email_prompt = gen_email_prompt(chat_summary)
 chat_email = glib.get_chat_response(input_text=email_prompt, memory=st.session_state.memory)  # call the model through the supporting library
 
-chat_email = "Dear Sir/Madam,\n\n" + chat_email + "\n\nYours Sincerely,\n\n _______"
-set_history(st, chat_summary, "assistant")  # add the chat response to the chat history
+chat_email = "chat_email"
+set_history(st, chat_email, "assistant")  # add the chat response to the chat history
 

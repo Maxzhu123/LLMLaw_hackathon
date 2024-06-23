@@ -56,11 +56,13 @@ def mark_changes_in_document(docx_filename):
         chunk_overlap=5,
         length_function=len,
         is_separator_regex=False,
+
     )
 
     texts = text_splitter.create_documents([full_text])
 
     return texts
 
+
 if __name__ == "__main__":
-    print(marker("NDA 1.docx")[10])
+    print(marker("NDA 1.docx")[5])

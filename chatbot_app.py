@@ -47,12 +47,12 @@ summary_prompt = gen_summary_prompt(all_summaries)
 set_history(st, summary_prompt, "user")  # add the chat response to the chat history
 chat_summary = glib.get_chat_response(input_text=summary_prompt, memory=st.session_state.memory)  # call the model through the supporting library
 
-set_history(st, chat_summary, "user")  # add the chat response to the chat history
+set_history(st, chat_summary, "assistant")  # add the chat response to the chat history
 st.session_state.chat_history = []  # clear the chat history
 
 # 5) Generate email
 st.session_state.chat_history = []  # clear the chat history
 email_prompt = gen_email_prompt(chat_summary)
 chat_email = glib.get_chat_response(input_text=email_prompt, memory=st.session_state.memory)  # call the model through the supporting library
-set_history(st, chat_summary, "user")  # add the chat response to the chat history
+set_history(st, chat_summary, "assistant")  # add the chat response to the chat history
 

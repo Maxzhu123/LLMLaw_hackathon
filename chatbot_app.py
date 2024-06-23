@@ -25,7 +25,8 @@ input_text = st.chat_input("Chat with your bot here")  # display a chat input bo
 input_doc_list = marker("NDA 1.docx") # get_blank_doc()
 
 summaries = []
-for doc in input_doc_list:
+for i, doc in enumerate(input_doc_list):
+    print(i)
     # 2) Get initial prompt for model
     doc_prompt = get_prompt(doc)
     set_history(st, doc_prompt, "user")
@@ -38,7 +39,9 @@ for doc in input_doc_list:
 
     summaries.append(chat_response)
 
+
 # 4) Summarise changes
+print("Summarising changes")
 all_summaries = "\n\n".join(summaries)
 summary_prompt = gen_summary_prompt(all_summaries)
 set_history(st, summary_prompt, "user")  # add the chat response to the chat history

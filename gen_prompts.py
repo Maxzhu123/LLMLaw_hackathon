@@ -1,8 +1,8 @@
 def get_prompt(doc):
 
-    init = """This is \n\n a legal document that has been revised. Insertions marked with [start_insert] and [end_insert]. Deletions are marked with [start_del] and [end_del]. Explain the impact of the changes made. The response will be clear and concise. If there are no meaningful changes, respond with N/A."""
+    init = """This is a legal document that has been revised. Insertions marked with [start_insert] and [end_insert]. Deletions are marked with [start_del] and [end_del]. Explain the impact of the changes made. The response will be clear and concise. If there are no meaningful changes, respond with N/A."""
 
-    return f'{init} \n {doc}'
+    return f'{init} \n\n {doc}'
 
 
 def gen_summary_prompt(summaries):

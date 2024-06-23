@@ -11,6 +11,6 @@ def gen_summary_prompt(summaries):
     return f'{prompt} \n\n {summaries}'
 
 def gen_email_prompt(summary):
-    prompt = """You have been asked to send an email to the other party in the legal document. Write an email that summarises the changes made to the document. The response should be clear and concise"""
+    prompt = """You have been asked to send an email to the other party in the legal document. Format the summary as an email. The response should be clear and concise"""
 
     return f'{prompt} \n\n {summary}'

@@ -54,5 +54,7 @@ st.session_state.chat_history = []  # clear the chat history
 st.session_state.chat_history = []  # clear the chat history
 email_prompt = gen_email_prompt(chat_summary)
 chat_email = glib.get_chat_response(input_text=email_prompt, memory=st.session_state.memory)  # call the model through the supporting library
+
+chat_email = "Dear Sir/Madam,\n\n" + chat_email + "\n\nYours Sincerely,\n\n _______"
 set_history(st, chat_summary, "assistant")  # add the chat response to the chat history
 

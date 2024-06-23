@@ -6,7 +6,7 @@ from langchain.chains import ConversationChain
 def get_llm():
     model_kwargs = {  # anthropic
         "max_tokens": 512,
-        "temperature": 0,
+        "temperature": 0.0,
         "top_k": 250,
         "top_p": 1,
         "stop_sequences": ["\n\nHuman:"]
@@ -43,5 +43,3 @@ def get_chat_response(input_text, memory):  # chat client function
     chat_response = conversation_with_summary.invoke(input_text)  # pass the user message and summary to the model
 
     return chat_response['response']
-
-

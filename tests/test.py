@@ -11,14 +11,26 @@ class Message:
         self.content = content
 
     def json_msg(self):
-        return {"role": self.role, "content": self.content}
+        return {"role": self.role, "content": [{"text": self.content}]}
 
 
-def send_request(content: Message):
+class MessageList:
+    def __init__(self):
+        self.messages = []
+
+    def add_message(self, role, content):
+        self.messages.append(Message(role, content))
+
+    def json_msg(self):
+        return [m.json_msg() for m in self.messages]
+
+
+def send_request(messages: MessageList):
     session = boto3.Session()
     bedrock = session.client(service_name='bedrock-runtime')
 
-    message_list = [content.json_msg()]
+    message_list = messages.json_msg()
+    print(message_list)
 
     response = bedrock.converse(
         modelId="anthropic.claude-3-sonnet-20240229-v1:0",
@@ -36,4 +48,6 @@ def send_request(content: Message):
 
 
 if __name__ == "__main__":
-    print(send_request(None))
+    msgs = MessageList()
+    msgs.add_message("user", "What is the legal age to sign a contract?")
+    print(send_request(msgs))

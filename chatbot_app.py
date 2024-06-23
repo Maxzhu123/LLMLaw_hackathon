@@ -28,7 +28,7 @@ summaries = []
 for i, doc in enumerate(input_doc_list):
     print(i)
     # 2) Get initial prompt for model
-    doc_prompt = get_prompt(doc)
+    doc_prompt = get_prompt(doc.page_content)
     set_history(st, doc_prompt, "user")
 
     # 3) Get chat analysis of diffs

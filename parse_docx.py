@@ -65,4 +65,4 @@ def mark_changes_in_document(docx_filename):
 
 
 if __name__ == "__main__":
-    print(marker("NDA 1.docx")[5])
+    print(marker("NDA 1.docx")[5].page_content)
